@@ -4,7 +4,7 @@
 
 #ifndef PROYECTOCLINICA_PACIENTE_H
 #define PROYECTOCLINICA_PACIENTE_H
-#include "PersonaBase.h"
+#include "../PersonaBase.h"
 
 #include <string>
 
