@@ -4,7 +4,16 @@ project(ProyectoClinica)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(ProyectoClinica main.cpp
-        "modelos/ impl/PersonaBase.cpp"
-        modelos/PersonaBase.h
-        "modelos/ impl/Paciente.cpp"
-        modelos/Paciente.h)
+        "modelos/base/impl/PersonaBase.cpp"
+        modelos/base/PersonaBase.h
+        "modelos/paciente/impl/Paciente.cpp"
+        modelos/paciente/Paciente.h
+        "modelos/administracion/impl/Medico.cpp"
+        modelos/administracion/Medico.h
+        "modelos/administracion/impl/Especialidad.cpp"
+        modelos/administracion/Especialidad.h
+        "modelos/administracion/impl/Sede.cpp"
+        modelos/administracion/Sede.h
+        "modelos/administracion/impl/Servicio.cpp"
+        modelos/administracion/Servicio.h
+)
