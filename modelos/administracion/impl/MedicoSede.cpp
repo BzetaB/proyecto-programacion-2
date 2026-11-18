@@ -3,3 +3,35 @@
 //
 
 #include "../MedicoSede.h"
+
+MedicoSede::MedicoSede() = default;
+
+MedicoSede::MedicoSede(int codigo, Medico* medico, Sede* sede)
+    : codigo(codigo), medico(medico), sede(sede) {
+}
+
+MedicoSede::~MedicoSede() = default;
+
+int MedicoSede::get_codigo() const {
+    return codigo;
+}
+
+void MedicoSede::set_codigo(int codigo) {
+    this->codigo = codigo;
+}
+
+Medico* MedicoSede::get_medico() const {
+    return medico;
+}
+
+void MedicoSede::set_medico(Medico* medico) {
+    this->medico = medico;
+}
+
+Sede* MedicoSede::get_sede() const {
+    return sede;
+}
+
+void MedicoSede::set_sede(Sede* sede) {
+    this->sede = sede;
+}
