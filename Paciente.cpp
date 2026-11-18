@@ -2,7 +2,7 @@
 #include <iostream>
 using namespace std;
 
-// La clase base (Persona) se inicializa despues de los dos puntos, como en la clase 11A.
+// La clase base (Persona) se inicializa despues de los dos puntos.
 Paciente::Paciente(int codigo, string dni, string nombres, string apellidos,
                    Fecha fechaNacimiento, string telefono, string sedeRegistro)
     : Persona(dni, nombres, apellidos, fechaNacimiento, telefono) {
