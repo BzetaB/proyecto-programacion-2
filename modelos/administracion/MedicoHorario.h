@@ -1,0 +1,13 @@
+//
+// Created by thom_ on 18/11/2026.
+//
+
+#ifndef PROYECTOCLINICA_MEDICOHORARIO_H
+#define PROYECTOCLINICA_MEDICOHORARIO_H
+
+
+class MedicoHorario {
+};
+
+
+#endif //PROYECTOCLINICA_MEDICOHORARIO_H

@@ -1,0 +1,13 @@
+//
+// Created by thom_ on 18/11/2026.
+//
+
+#ifndef PROYECTOCLINICA_MEDICOESPECIALIDAD_H
+#define PROYECTOCLINICA_MEDICOESPECIALIDAD_H
+
+
+class MedicoEspecialidad {
+};
+
+
+#endif //PROYECTOCLINICA_MEDICOESPECIALIDAD_H
