@@ -6,8 +6,6 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(ProyectoClinica main.cpp
         "modelos/base/impl/PersonaBase.cpp"
         modelos/base/PersonaBase.h
-        "modelos/paciente/impl/Paciente.cpp"
-        modelos/paciente/Paciente.h
         "modelos/administracion/impl/Medico.cpp"
         modelos/administracion/Medico.h
         "modelos/administracion/impl/Especialidad.cpp"
