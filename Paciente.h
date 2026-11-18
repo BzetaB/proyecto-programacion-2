@@ -8,11 +8,11 @@ using namespace std;
 
 class Paciente : public Persona {
 private:
-    int codigo;                   // se muestra como PAC-codigo
+    int codigo;               
     string sedeRegistro;
     HistoriaClinica historia;     // COMPOSICION: la historia es parte del paciente
     Responsable* responsable;     // COMPOSICION: se crea con new y el paciente lo elimina
-    Convenio* convenio;           // ASOCIACION: el convenio existe aparte (no se elimina aqui)
+    Convenio* convenio;           // ASOCIACION: el convenio existe aparte 
 public:
     Paciente(int codigo, string dni, string nombres, string apellidos,
              Fecha fechaNacimiento, string telefono, string sedeRegistro);
