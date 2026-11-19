@@ -1,0 +1,13 @@
+//
+// Created by HP on 18/11/2026.
+//
+
+#ifndef PROYECTOCLINICA_COMPROBANTE_H
+#define PROYECTOCLINICA_COMPROBANTE_H
+
+
+class Comprobante {
+};
+
+
+#endif //PROYECTOCLINICA_COMPROBANTE_H
