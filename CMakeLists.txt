@@ -24,8 +24,15 @@ add_executable(ProyectoClinica main.cpp
         modelos/administracion/MedicoHorario.h
         "modelos/administracion/impl/Horario.cpp"
         modelos/administracion/Horario.h
-        modelos/facturasPagos/Comprobante.cpp
-        modelos/facturasPagos/Comprobante.h
         modelos/administracion/impl/Consultorio.cpp
         modelos/administracion/Consultorio.h
+        modelos/facturacion/ServicioCobro.h
+        modelos/facturacion/Pago.h
+        modelos/facturacion/CajaClinica.h
+        modelos/facturacion/Reportes.h
+        modelos/facturacion/Comprobante.h
+        modelos/facturacion/impl/ServicioCobro.cpp
+        modelos/facturacion/impl/Pago.cpp
+        modelos/facturacion/impl/Comprobante.cpp
+        modelos/facturacion/impl/CajaClinica.cpp
 )
