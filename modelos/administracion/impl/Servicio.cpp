@@ -7,13 +7,14 @@
 Servicio::Servicio() = default;
 
 Servicio::Servicio(int codigo, std::string nombre, std::string descripcion, int duracion_minutos, double tarifa_base,
-                   bool activo)
+                   bool activo, Especialidad* especialidad_requerida)
     : codigo(codigo),
       nombre(nombre),
       descripcion(descripcion),
       duracionMinutos(duracion_minutos),
       tarifaBase(tarifa_base),
-      activo(activo) {
+      activo(activo),
+      especialidadRequerida(especialidad_requerida) {
 }
 
 int Servicio::get_codigo() const {
@@ -62,4 +63,12 @@ bool Servicio::get_activo() const {
 
 void Servicio::set_activo(bool activo) {
     this->activo = activo;
+}
+
+Especialidad* Servicio::getEspecialidadRequerida() const {
+    return especialidadRequerida;
+}
+
+void Servicio::setEspecialidadRequerida(Especialidad* especialidad) {
+    especialidadRequerida = especialidad;
 }

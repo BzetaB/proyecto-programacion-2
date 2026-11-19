@@ -7,6 +7,8 @@
 
 #include <string>
 
+class Especialidad;
+
 class Servicio {
 private:
     int codigo = 0;
@@ -15,12 +17,13 @@ private:
     int duracionMinutos = 0;
     double tarifaBase = 0.0;
     bool activo = false;
+    Especialidad* especialidadRequerida = nullptr;
 
 public:
     Servicio();
 
     Servicio(int codigo, std::string nombre, std::string descripcion, int duracion_minutos, double tarifa_base,
-             bool activo);
+             bool activo, Especialidad* especialidad_requerida = nullptr);
 
     int get_codigo() const;
     void set_codigo(int codigo);
@@ -39,6 +42,9 @@ public:
 
     bool get_activo() const;
     void set_activo(bool activo);
+
+    Especialidad* getEspecialidadRequerida() const;
+    void setEspecialidadRequerida(Especialidad* especialidad);
 };
 
 
