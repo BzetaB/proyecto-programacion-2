@@ -6,6 +6,9 @@
 #define PROYECTOCLINICA_SEDE_H
 
 #include <string>
+#include <vector>
+
+class Consultorio;
 
 class Sede {
 private:
@@ -13,6 +16,7 @@ private:
     std::string nombre;
     std::string direccion;
     bool activo = false;
+    std::vector<Consultorio*> consultorios;
 
 public:
     Sede();
@@ -30,6 +34,10 @@ public:
 
     bool get_activo() const;
     void set_activo(bool activo);
+
+    const std::vector<Consultorio*>& get_consultorios() const;
+    void agregar_consultorio(Consultorio* consultorio);
+    void quitar_consultorio(Consultorio* consultorio);
 };
 
 

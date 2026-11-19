@@ -3,6 +3,9 @@
 //
 
 #include "../Sede.h"
+#include "../Consultorio.h"
+#include <algorithm>
+#include <iostream>
 
 Sede::Sede() = default;
 
@@ -43,4 +46,33 @@ bool Sede::get_activo() const {
 
 void Sede::set_activo(bool activo) {
     this->activo = activo;
+}
+
+const std::vector<Consultorio*>& Sede::get_consultorios() const {
+    return consultorios;
+}
+
+void Sede::agregar_consultorio(Consultorio* consultorio) {
+    if (consultorio == nullptr || std::find(
+        consultorios.begin(), consultorios.end(), consultorio) != consultorios.end()) {
+        std::cout << "El consultorio ya está asociado a esta sede o es nulo." << std::endl;
+        return;
+    }
+
+    consultorios.push_back(consultorio);
+    consultorio->set_sede(this);
+}
+
+void Sede::quitar_consultorio(Consultorio* consultorio) {
+    if (consultorio == nullptr) {
+        return;
+    }
+
+    consultorios.erase(
+        std::remove(consultorios.begin(), consultorios.end(), consultorio),
+        consultorios.end());
+
+    if (consultorio->get_sede() == this) {
+        consultorio->set_sede(nullptr);
+    }
 }
