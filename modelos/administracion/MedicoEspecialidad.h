@@ -27,6 +27,9 @@ public:
 
     Especialidad* get_especialidad() const;
     void set_especialidad(Especialidad* especialidad);
+
+    bool correspondeA(const Medico* medico,
+                      const Especialidad* especialidad) const;
 };
 
 

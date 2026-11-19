@@ -35,3 +35,7 @@ Especialidad* MedicoEspecialidad::get_especialidad() const {
 void MedicoEspecialidad::set_especialidad(Especialidad* especialidad) {
     this->especialidad = especialidad;
 }
+
+bool MedicoEspecialidad::correspondeA(const Medico* medico, const Especialidad* especialidad) const {
+    return this->medico == medico && this->especialidad == especialidad;
+}
