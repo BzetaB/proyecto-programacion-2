@@ -3,6 +3,8 @@
 //
 
 #include "../Medico.h"
+#include "../MedicoEspecialidad.h"
+#include "../Servicio.h"
 
 Medico::Medico() = default;
 
@@ -38,4 +40,32 @@ bool Medico::get_activo() const {
 
 void Medico::set_activo(bool activo) {
     this->activo = activo;
+}
+
+void Medico::agregarEspecialidad(MedicoEspecialidad* especialidad) {
+    if (especialidad != nullptr) {
+        especialidades.push_back(especialidad);
+    }
+}
+
+bool Medico::poseeEspecialidad(Especialidad* especialidad) const {
+    if (especialidad == nullptr) {
+        return false;
+    }
+
+    for (MedicoEspecialidad* relacion : especialidades) {
+        if (relacion != nullptr && relacion->correspondeA(this, especialidad)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool Medico::puedeRealizarServicio(Servicio* servicio) const {
+    if (servicio == nullptr || !activo || !servicio->get_activo()) {
+        return false;
+    }
+
+    return poseeEspecialidad(servicio->getEspecialidadRequerida());
 }

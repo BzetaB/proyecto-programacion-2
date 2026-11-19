@@ -7,12 +7,18 @@
 
 #include "../base/PersonaBase.h"
 #include <string>
+#include <vector>
+
+class Especialidad;
+class MedicoEspecialidad;
+class Servicio;
 
 class Medico : public PersonaBase {
 private:
     int aniosExperiencia = 0;
     std::string colegiatura;
     bool activo = false;
+    std::vector<MedicoEspecialidad*> especialidades;
 
 public:
     Medico();
@@ -29,6 +35,10 @@ public:
 
     bool get_activo() const;
     void set_activo(bool activo);
+
+    void agregarEspecialidad(MedicoEspecialidad* especialidad);
+    bool poseeEspecialidad(Especialidad* especialidad) const;
+    bool puedeRealizarServicio(Servicio* servicio) const;
 };
 
 
