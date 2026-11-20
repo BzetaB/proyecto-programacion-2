@@ -24,7 +24,7 @@ public:
     Medico();
 
     Medico(std::string identificador_persona, std::string nombre, std::string apellido, std::string dni,
-           int añoNacimiento, std::string correo_electronico, std::string celular, char sexo,
+           int añoNacimiento,
            int anios_experiencia, std::string colegiatura, bool activo);
 
     int get_anios_experiencia() const;

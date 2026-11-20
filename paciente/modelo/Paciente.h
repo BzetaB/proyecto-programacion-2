@@ -23,9 +23,6 @@ public:
         std::string apellido,
         std::string dni,
         int añoNacimiento,
-        std::string correoElectronico,
-        std::string celular,
-        char sexo,
         Responsable* responsable,
         Convenio* convenio
     );

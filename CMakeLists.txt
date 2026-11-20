@@ -44,8 +44,6 @@ add_executable(ProyectoClinica main.cpp
         administracion/servicio/HorarioServicio.h
         administracion/servicio/impl/ConsultorioServicio.cpp
         administracion/servicio/ConsultorioServicio.h
-        administracion/pruebas/DatosPruebaAdministracion.cpp
-        administracion/pruebas/DatosPruebaAdministracion.h
         atencion/modelo/Cita.cpp
         atencion/modelo/Cita.h
         atencion/modelo/Atencion.cpp
@@ -58,6 +56,8 @@ add_executable(ProyectoClinica main.cpp
         paciente/modelo/HistoriaClinica.h
         paciente/servicio/PacienteServicio.cpp
         paciente/servicio/PacienteServicio.h
+        paciente/servicio/ResponsableServicio.cpp
+        paciente/servicio/ResponsableServicio.h
         atencion/servicio/HistoriaClinicaServicio.cpp
         atencion/servicio/HistoriaClinicaServicio.h
         atencion/servicio/AgendaServicio.cpp

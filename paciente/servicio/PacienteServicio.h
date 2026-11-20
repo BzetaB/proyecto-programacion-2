@@ -17,9 +17,8 @@ private:
 
     bool existeDni(const std::string& dni);
 
-    bool esMenorEdad(Paciente* paciente);
-
 public:
+    bool esMenorEdad(Paciente* paciente);
     bool registrarPaciente(Paciente* paciente);
     Paciente* buscarPacientePorIdentificador(const std::string& identificador);
     std::vector<Paciente*> listarPacientes();

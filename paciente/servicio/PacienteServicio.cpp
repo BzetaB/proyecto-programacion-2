@@ -7,6 +7,7 @@
 #include <iostream>
 
 #include "../../paciente/modelo/Paciente.h"
+#include "../../paciente/modelo/Responsable.h"
 #include <string>
 
 Paciente* PacienteServicio::buscarPacientePorIdentificador(const std::string& identificador) {
@@ -43,6 +44,24 @@ bool PacienteServicio::registrarPaciente(Paciente* paciente) {
     if (esMenorEdad(paciente) && paciente->get_responsable() == nullptr) {
         std::cout << "Los pacientes menores de edad deben tener responsable."<< std::endl;
         return false;
+    }
+
+    Responsable* responsable = paciente->get_responsable();
+    if (responsable != nullptr) {
+        if ((2026 - responsable->get_año_nacimiento()) < 18) {
+            std::cout << "El responsable debe ser mayor de edad." << std::endl;
+            return false;
+        }
+
+        if (responsable->get_identificador_persona() == paciente->get_identificador_persona()) {
+            std::cout << "El responsable no puede tener el mismo identificador que el paciente." << std::endl;
+            return false;
+        }
+
+        if (responsable->get_dni() == paciente->get_dni()) {
+            std::cout << "El responsable no puede tener el mismo DNI que el paciente." << std::endl;
+            return false;
+        }
     }
 
     pacienteRepository.agregar(paciente);

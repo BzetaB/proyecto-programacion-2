@@ -12,19 +12,13 @@ Responsable::Responsable(
     std::string apellido,
     std::string dni,
     int añoNacimiento,
-    std::string correoElectronico,
-    std::string celular,
-    char sexo,
     std::string parentesco
 ) : PersonaBase(
         identificadorPersona,
         nombre,
         apellido,
         dni,
-        añoNacimiento,
-        correoElectronico,
-        celular,
-        sexo
+        añoNacimiento
     ) {
     this->parentesco = parentesco;
 }

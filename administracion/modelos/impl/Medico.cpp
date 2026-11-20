@@ -7,10 +7,10 @@
 Medico::Medico() = default;
 
 Medico::Medico(std::string identificador_persona, std::string nombre, std::string apellido, std::string dni,
-               int añoNacimiento, std::string correo_electronico, std::string celular, char sexo,
+               int añoNacimiento,
                int anios_experiencia, std::string colegiatura, bool activo)
     : PersonaBase(identificador_persona, nombre, apellido, dni,
-                  añoNacimiento, correo_electronico, celular, sexo) {
+                  añoNacimiento) {
     this->aniosExperiencia = anios_experiencia;
     this->colegiatura = colegiatura;
     this->activo = activo;

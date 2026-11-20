@@ -14,9 +14,6 @@ protected:
     std::string apellido;
     std::string dni;
     int añoNacimiento;
-    std::string correoElectronico;
-    std::string celular;
-    char sexo = 'M';
 
 public:
     PersonaBase();
@@ -24,7 +21,7 @@ public:
     virtual ~PersonaBase();
 
     PersonaBase(std::string identificador_persona, std::string nombre, std::string apellido, std::string dni,
-        int añoNacimiento, std::string correo_electronico, std::string celular, char sexo);
+        int añoNacimiento);
 
     std::string get_identificador_persona() const;
 
@@ -41,18 +38,6 @@ public:
     int get_año_nacimiento() const;
 
     void set_año_nacimiento(int año_nacimiento);
-
-    std::string get_correo_electronico() const;
-
-    void set_correo_electronico(std::string correo_electronico);
-
-    std::string get_celular() const;
-
-    void set_celular(std::string celular);
-
-    char get_sexo() const;
-
-    void set_sexo(char sexo);
 
     // Metodo virtual
     virtual std::string obtenerTipo() const = 0;

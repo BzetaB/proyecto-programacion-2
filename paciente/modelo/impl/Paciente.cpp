@@ -12,9 +12,6 @@ Paciente::Paciente(
     std::string apellido,
     std::string dni,
     int añoNacimiento,
-    std::string correoElectronico,
-    std::string celular,
-    char sexo,
     Responsable* responsable,
     Convenio* convenio
 ) : PersonaBase(
@@ -22,10 +19,7 @@ Paciente::Paciente(
         nombre,
         apellido,
         dni,
-        añoNacimiento,
-        correoElectronico,
-        celular,
-        sexo
+        añoNacimiento
     ) {
 
     this->responsable = responsable;
