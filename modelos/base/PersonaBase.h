@@ -57,6 +57,9 @@ public:
     char get_sexo() const;
 
     void set_sexo(char sexo);
+
+    // Metodo virtual
+    virtual std::string obtenerTipo() const = 0;
 };
 
 

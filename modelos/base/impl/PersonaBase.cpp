@@ -8,15 +8,17 @@ PersonaBase::PersonaBase() = default;
 
 PersonaBase::~PersonaBase() = default;
 
-PersonaBase::PersonaBase(std::string identificador_persona, std::string nombre, std::string apellido, std::string dni,
-                         std::string fecha_nacimiento, std::string correo_electronico, std::string celular, char sexo): identificadorPersona(identificador_persona),
-                                                                                                                        nombre(nombre),
-                                                                                                                        apellido(apellido),
-                                                                                                                        dni(dni),
-                                                                                                                        fechaNacimiento(fecha_nacimiento),
-                                                                                                                        correoElectronico(correo_electronico),
-                                                                                                                        celular(celular),
-                                                                                                                        sexo(sexo) {
+PersonaBase::PersonaBase(std::string identificador_persona, std::string nombre,
+    std::string apellido, std::string dni,std::string fecha_nacimiento,
+    std::string correo_electronico, std::string celular, char sexo) {
+    this->identificadorPersona = identificador_persona;
+    this->nombre = nombre;
+    this->apellido = apellido;
+    this->dni = dni;
+    this->fechaNacimiento = fecha_nacimiento;
+    this->correoElectronico = correo_electronico;
+    this->celular = celular;
+    this->sexo = sexo;
 }
 
 std::string PersonaBase::get_identificador_persona() const {
@@ -82,3 +84,4 @@ char PersonaBase::get_sexo() const {
 void PersonaBase::set_sexo(char sexo) {
     this->sexo = sexo;
 }
+
