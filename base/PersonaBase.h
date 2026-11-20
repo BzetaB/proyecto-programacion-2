@@ -39,6 +39,9 @@ public:
 
     void set_año_nacimiento(int año_nacimiento);
 
+    static bool existeIdentificadorRegistrado(const std::string& identificador);
+    static bool registrarIdentificador(const std::string& identificador);
+
     // Metodo virtual
     virtual std::string obtenerTipo() const = 0;
 };

@@ -19,6 +19,8 @@ private:
 public:
     bool existeSuperposicion(Medico* medicoSede, Horario* horario);
 
+    bool existeAsignacionDuplicada(Medico* medico, Sede* sede, Horario* horario);
+
     bool registrarAsignacion(MedicoSede* medicoSede);
 
     std::vector<MedicoSede*> listarAsignaciones();

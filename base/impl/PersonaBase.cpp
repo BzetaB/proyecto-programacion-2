@@ -3,6 +3,11 @@
 //
 
 #include "../PersonaBase.h"
+#include <unordered_set>
+
+namespace {
+    std::unordered_set<std::string> identificadoresRegistrados;
+}
 
 PersonaBase::PersonaBase() = default;
 
@@ -49,3 +54,14 @@ void PersonaBase::set_año_nacimiento(int año_nacimiento) {
     añoNacimiento = año_nacimiento;
 }
 
+bool PersonaBase::existeIdentificadorRegistrado(const std::string& identificador) {
+    return identificadoresRegistrados.find(identificador) != identificadoresRegistrados.end();
+}
+
+bool PersonaBase::registrarIdentificador(const std::string& identificador) {
+    if (identificador.empty() || existeIdentificadorRegistrado(identificador)) {
+        return false;
+    }
+    identificadoresRegistrados.insert(identificador);
+    return true;
+}

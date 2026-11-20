@@ -40,13 +40,18 @@ bool ResponsableServicio::registrarResponsable(Responsable* responsable) {
         return false;
     }
 
-    if (existeIdentificador(responsable->get_identificador_persona())) {
-        std::cout << "Ya existe un responsable con ese identificador." << std::endl;
+    if (Responsable::existeIdentificadorRegistrado(responsable->get_identificador_persona())) {
+        std::cout << "Ya existe una persona con ese identificador." << std::endl;
         return false;
     }
 
     if (existeDni(responsable->get_dni())) {
         std::cout << "Ya existe un responsable con ese DNI." << std::endl;
+        return false;
+    }
+
+    if (!Responsable::registrarIdentificador(responsable->get_identificador_persona())) {
+        std::cout << "El identificador ya pertenece a otra persona." << std::endl;
         return false;
     }
 

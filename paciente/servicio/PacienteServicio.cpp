@@ -30,9 +30,13 @@ bool PacienteServicio::existeDni(const std::string& dni) {
 }
 
 bool PacienteServicio::registrarPaciente(Paciente* paciente) {
+    if (paciente == nullptr) {
+        std::cout << "Debe proporcionar los datos del paciente." << std::endl;
+        return false;
+    }
 
-    if (existeIdentificador(paciente->get_identificador_persona())) {
-        std::cout << "Ya existe un paciente con ese identificador."<< std::endl;
+    if (Paciente::existeIdentificadorRegistrado(paciente->get_identificador_persona())) {
+        std::cout << "Ya existe una persona con ese identificador."<< std::endl;
         return false;
     }
 
@@ -64,8 +68,12 @@ bool PacienteServicio::registrarPaciente(Paciente* paciente) {
         }
     }
 
-    pacienteRepository.agregar(paciente);
+    if (!Paciente::registrarIdentificador(paciente->get_identificador_persona())) {
+        std::cout << "El identificador ya pertenece a otra persona." << std::endl;
+        return false;
+    }
 
+    pacienteRepository.agregar(paciente);
     std::cout << "Paciente registrado correctamente."<< std::endl;
 
     return true;

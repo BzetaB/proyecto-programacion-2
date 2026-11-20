@@ -16,8 +16,7 @@ class HistoriaClinicaServicio;
 
 class CitaServicio {
 private:
-
-    Repositorio<Cita> citaRepository;
+    Repositorio<Cita>* citaRepository;
 
     AgendaServicio* agendaServicio;
     HistoriaClinicaServicio* historiaClinicaServicio;
@@ -27,6 +26,7 @@ private:
 public:
 
     CitaServicio(
+        Repositorio<Cita>* citaRepository,
         AgendaServicio* agendaServicio,
         HistoriaClinicaServicio* historiaClinicaServicio
     );

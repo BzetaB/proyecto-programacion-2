@@ -12,7 +12,7 @@ class MedicoServicio {
 private:
     PersonaRepositorio<Medico> medicoRepository;
 public:
-    void registrarMedico(Medico* medico);
+    bool registrarMedico(Medico* medico);
 
     Medico* buscarMedicoPorIdentificador(const std::string& identificador);
 

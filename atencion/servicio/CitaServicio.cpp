@@ -12,9 +12,10 @@
 #include "../servicio/HistoriaClinicaServicio.h"
 
 CitaServicio::CitaServicio(
+        Repositorio<Cita>* citaRepository,
         AgendaServicio* agendaServicio,
         HistoriaClinicaServicio* historiaClinicaServicio) {
-
+    this->citaRepository = citaRepository;
     this->agendaServicio = agendaServicio;
     this->historiaClinicaServicio = historiaClinicaServicio;
 }
@@ -65,7 +66,7 @@ bool CitaServicio::programarCita(
         return false;
     }
 
-    citaRepository.agregar(cita);
+    citaRepository->agregar(cita);
 
     std::cout
         << "Cita programada correctamente."
@@ -221,13 +222,13 @@ bool CitaServicio::atenderCita(
 
 std::vector<Cita*> CitaServicio::listarCitas() {
 
-    return citaRepository.listar();
+    return citaRepository->listar();
 }
 
 Cita* CitaServicio::buscarPorCodigo(
         const std::string& codigo) {
 
-    for (Cita* cita : citaRepository.listar()) {
+    for (Cita* cita : citaRepository->listar()) {
 
         if (
             cita != nullptr &&

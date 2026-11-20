@@ -6,6 +6,7 @@
 #include "../../modelos/Horario.h"
 #include "../../modelos/MedicoSede.h"
 #include "../../modelos/Sede.h"
+#include <iostream>
 
 static int convertirHoraAsignacion(const std::string& hora) {
     if (hora.size() < 5 || hora[2] != ':') {
@@ -26,19 +27,17 @@ static int convertirHoraAsignacion(const std::string& hora) {
 }
 
 bool HorarioServicio::existeSuperposicion(Medico* medico, Horario* horario) {
+    if (medico == nullptr || horario == nullptr) {
+        return false;
+    }
+
     for (MedicoSede* relacion : medicoSedeRepositorio.listar()) {
-        if (relacion->get_medico() != medico) {
+        if (relacion == nullptr || relacion->get_medico() != medico) {
             continue;
         }
 
         Horario* horarioExistente = relacion->get_horario();
-
-        if (horarioExistente-> get_fecha() != horario->get_fecha()) {
-            continue;
-        }
-
-        if (horario->get_hora_inicio() < horarioExistente->get_hora_fin() &&
-            horario->get_hora_fin() > horarioExistente->get_hora_inicio() ) {
+        if (horarioExistente != nullptr && horarioExistente->seSuperpone(horario)) {
             return true;
         }
     }
@@ -46,9 +45,48 @@ bool HorarioServicio::existeSuperposicion(Medico* medico, Horario* horario) {
     return false;
 }
 
+bool HorarioServicio::existeAsignacionDuplicada(Medico* medico, Sede* sede, Horario* horario) {
+    if (medico == nullptr || sede == nullptr || horario == nullptr) {
+        return false;
+    }
+
+    for (MedicoSede* relacion : medicoSedeRepositorio.listar()) {
+        if (relacion == nullptr ||
+            relacion->get_medico() != medico ||
+            relacion->get_sede() != sede) {
+            continue;
+        }
+
+        Horario* existente = relacion->get_horario();
+        if (existente != nullptr &&
+            existente->get_fecha() == horario->get_fecha() &&
+            existente->get_hora_inicio() == horario->get_hora_inicio() &&
+            existente->get_hora_fin() == horario->get_hora_fin()) {
+            return true;
+        }
+    }
+    return false;
+}
+
 
 bool HorarioServicio::registrarAsignacion(MedicoSede* medicoSede) {
+    if (medicoSede == nullptr ||
+        medicoSede->get_medico() == nullptr ||
+        medicoSede->get_sede() == nullptr ||
+        medicoSede->get_horario() == nullptr) {
+        return false;
+    }
+
+    if (existeAsignacionDuplicada(
+            medicoSede->get_medico(),
+            medicoSede->get_sede(),
+            medicoSede->get_horario())) {
+        std::cout << "La asignacion ya existe para ese medico, sede y horario." << std::endl;
+        return false;
+    }
+
     if (existeSuperposicion(medicoSede->get_medico(), medicoSede->get_horario())) {
+        std::cout << "El horario se superpone con una asignacion existente." << std::endl;
         return false;
     }
 
