@@ -50,4 +50,8 @@ add_executable(ProyectoClinica main.cpp
         administracion/repositorio/template/Repositorio.h
         administracion/servicio/impl/HorarioServicio.cpp
         administracion/servicio/HorarioServicio.h
+        administracion/servicio/impl/ConsultorioServicio.cpp
+        administracion/servicio/ConsultorioServicio.h
+        administracion/pruebas/DatosPruebaAdministracion.cpp
+        administracion/pruebas/DatosPruebaAdministracion.h
 )

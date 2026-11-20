@@ -8,7 +8,7 @@
 #include <string>
 
 class PersonaBase {
-private:
+protected:
     std::string identificadorPersona;
     std::string nombre;
     std::string apellido;
