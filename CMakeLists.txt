@@ -8,24 +8,22 @@ add_executable(ProyectoClinica main.cpp
         modelos/base/PersonaBase.h
         "modelos/paciente/impl/Paciente.cpp"
         modelos/paciente/Paciente.h
-        "modelos/administracion/impl/Medico.cpp"
-        modelos/administracion/Medico.h
-        "modelos/administracion/impl/Especialidad.cpp"
-        modelos/administracion/Especialidad.h
-        "modelos/administracion/impl/Sede.cpp"
-        modelos/administracion/Sede.h
-        "modelos/administracion/impl/Servicio.cpp"
-        modelos/administracion/Servicio.h
-        "modelos/administracion/impl/MedicoSede.cpp"
-        modelos/administracion/MedicoSede.h
-        "modelos/administracion/impl/MedicoEspecialidad.cpp"
-        modelos/administracion/MedicoEspecialidad.h
-        "modelos/administracion/impl/MedicoHorario.cpp"
-        modelos/administracion/MedicoHorario.h
-        "modelos/administracion/impl/Horario.cpp"
-        modelos/administracion/Horario.h
-        modelos/administracion/impl/Consultorio.cpp
-        modelos/administracion/Consultorio.h
+        "administracion/modelos/impl/Medico.cpp"
+        administracion/modelos/Medico.h
+        "administracion/modelos/impl/Especialidad.cpp"
+        administracion/modelos/Especialidad.h
+        "administracion/modelos/impl/Sede.cpp"
+        administracion/modelos/Sede.h
+        "administracion/modelos/impl/Servicio.cpp"
+        administracion/modelos/Servicio.h
+        "administracion/modelos/impl/MedicoSede.cpp"
+        administracion/modelos/MedicoSede.h
+        "administracion/modelos/impl/MedicoEspecialidad.cpp"
+        administracion/modelos/MedicoEspecialidad.h
+        "administracion/modelos/impl/Horario.cpp"
+        administracion/modelos/Horario.h
+        administracion/modelos/impl/Consultorio.cpp
+        administracion/modelos/Consultorio.h
         modelos/facturacion/ServicioCobro.h
         modelos/facturacion/Pago.h
         modelos/facturacion/CajaClinica.h
@@ -36,4 +34,13 @@ add_executable(ProyectoClinica main.cpp
         modelos/facturacion/impl/Comprobante.cpp
         modelos/facturacion/impl/CajaClinica.cpp
         modelos/facturacion/impl/Reportes.cpp
+        administracion/repositorio/template/TPersonaRepositorio.h
+        administracion/repositorio/template/PersonaRepositorio.h
+        administracion/servicio/impl/MedicoServicio.cpp
+        administracion/servicio/MedicoServicio.h
+        administracion/servicio/impl/HabilitacionServicio.cpp
+        administracion/servicio/HabilitacionServicio.h
+        administracion/repositorio/template/Repositorio.h
+        administracion/servicio/impl/HorarioServicio.cpp
+        administracion/servicio/HorarioServicio.h
 )
