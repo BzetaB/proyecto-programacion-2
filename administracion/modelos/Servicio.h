@@ -6,24 +6,26 @@
 #define PROYECTOCLINICA_SERVICIOS_H
 
 #include <string>
+#include <vector>
 
 class Especialidad;
 
 class Servicio {
 private:
-    int codigo = 0;
+    int codigo;
     std::string nombre;
     std::string descripcion;
-    int duracionMinutos = 0;
-    double tarifaBase = 0.0;
-    bool activo = false;
-    Especialidad* especialidadRequerida = nullptr;
+    int duracionMinutos;
+    double tarifaBase;
+    bool activo;
+    Especialidad* especialidadRequerida;
+    std::vector<std::string> equipamentosRequeridos;
 
 public:
     Servicio();
 
     Servicio(int codigo, std::string nombre, std::string descripcion, int duracion_minutos, double tarifa_base,
-             bool activo, Especialidad* especialidad_requerida = nullptr);
+             bool activo, Especialidad* especialidad_requerida, std::vector<std::string> equipamentos_requeridos);
 
     int get_codigo() const;
     void set_codigo(int codigo);
@@ -45,6 +47,9 @@ public:
 
     Especialidad* getEspecialidadRequerida() const;
     void setEspecialidadRequerida(Especialidad* especialidad);
+
+    std::vector<std::string> get_equipamentos_requeridos() const;
+    void set_equipamentos_requeridos(std::vector<std::string> equipamentos_requeridos);
 };
 
 

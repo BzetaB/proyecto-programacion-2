@@ -8,10 +8,11 @@ Consultorio::~Consultorio() = default;
 
 Consultorio::Consultorio() = default;
 
-Consultorio::Consultorio(int codigo, std::string nombre, std::vector<std::string> equipamentos, Sede *sede): codigo(codigo),
-                                                                                                             nombre(nombre),
-                                                                                                             equipamentos(equipamentos),
-                                                                                                             sede(sede) {
+Consultorio::Consultorio(int codigo, std::string nombre, std::vector<std::string> equipamentos, Sede *sede) {
+    this->codigo = codigo;
+    this->nombre = nombre;
+    this->equipamentos = equipamentos;
+    this->sede = sede;
 }
 
 int Consultorio::codigo1() const {
@@ -30,7 +31,7 @@ void Consultorio::set_nombre(std::string nombre) {
     this->nombre = nombre;
 }
 
-std::vector<std::string> Consultorio::equipamentos1() const {
+std::vector<std::string> Consultorio::get_equipamentos() const {
     return equipamentos;
 }
 
@@ -44,4 +45,13 @@ Sede * Consultorio::get_sede() const {
 
 void Consultorio::set_sede(Sede *sede) {
     this->sede = sede;
+}
+
+bool Consultorio::tieneEquipamiento(const std::string& equipo) {
+    for (const std::string& equipamiento : equipamentos) {
+        if (equipamiento == equipo) {
+            return true;
+        }
+    }
+    return false;
 }

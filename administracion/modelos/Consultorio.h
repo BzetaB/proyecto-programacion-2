@@ -32,13 +32,15 @@ public:
 
     void set_nombre(std::string nombre);
 
-    std::vector<std::string> equipamentos1() const;
+    std::vector<std::string> get_equipamentos() const;
 
     void set_equipamentos(std::vector<std::string> equipamentos);
 
     Sede * get_sede() const;
 
     void set_sede(Sede *sede);
+
+    bool tieneEquipamiento(const std::string& equipo);
 };
 
 

@@ -16,7 +16,6 @@ private:
     std::string nombre;
     std::string direccion;
     bool activo = false;
-    std::vector<Consultorio*> consultorios;
 
 public:
     Sede();
@@ -34,8 +33,6 @@ public:
 
     bool get_activo() const;
     void set_activo(bool activo);
-
-    const std::vector<Consultorio*>& get_consultorios() const;
 };
 
 

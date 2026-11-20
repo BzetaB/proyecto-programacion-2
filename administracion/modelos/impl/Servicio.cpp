@@ -6,15 +6,18 @@
 
 Servicio::Servicio() = default;
 
-Servicio::Servicio(int codigo, std::string nombre, std::string descripcion, int duracion_minutos, double tarifa_base,
-                   bool activo, Especialidad* especialidad_requerida)
-    : codigo(codigo),
-      nombre(nombre),
-      descripcion(descripcion),
-      duracionMinutos(duracion_minutos),
-      tarifaBase(tarifa_base),
-      activo(activo),
-      especialidadRequerida(especialidad_requerida) {
+Servicio::Servicio(int codigo, std::string nombre, std::string descripcion, int duracion_minutos,
+    double tarifa_base, bool activo, Especialidad* especialidad_requerida,
+    std::vector<std::string> equipamentos_requeridos) {
+
+    this->codigo = codigo;
+    this->nombre = nombre;
+    this->descripcion = descripcion;
+    this->duracionMinutos = duracion_minutos;
+    this->tarifaBase = tarifa_base;
+    this->activo = activo;
+    this->especialidadRequerida = especialidad_requerida;
+    this->equipamentosRequeridos = equipamentos_requeridos;
 }
 
 int Servicio::get_codigo() const {
@@ -71,4 +74,12 @@ Especialidad* Servicio::getEspecialidadRequerida() const {
 
 void Servicio::setEspecialidadRequerida(Especialidad* especialidad) {
     especialidadRequerida = especialidad;
+}
+
+std::vector<std::string> Servicio::get_equipamentos_requeridos() const {
+    return this->equipamentosRequeridos;
+}
+
+void Servicio::set_equipamentos_requeridos(std::vector<std::string> equipamentos_requeridos) {
+    this->equipamentosRequeridos = equipamentos_requeridos;
 }

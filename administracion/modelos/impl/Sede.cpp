@@ -47,7 +47,3 @@ void Sede::set_activo(bool activo) {
     this->activo = activo;
 }
 
-const std::vector<Consultorio*>& Sede::get_consultorios() const {
-    return consultorios;
-}
-
