@@ -35,4 +35,5 @@ add_executable(ProyectoClinica main.cpp
         modelos/facturacion/impl/Pago.cpp
         modelos/facturacion/impl/Comprobante.cpp
         modelos/facturacion/impl/CajaClinica.cpp
+        modelos/facturacion/impl/Reportes.cpp
 )
