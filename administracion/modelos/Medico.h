@@ -5,7 +5,7 @@
 #ifndef PROYECTOCLINICA_MEDICO_H
 #define PROYECTOCLINICA_MEDICO_H
 
-#include "../../modelos/base/PersonaBase.h"
+#include "../../base/PersonaBase.h"
 #include <string>
 #include <vector>
 
@@ -24,7 +24,7 @@ public:
     Medico();
 
     Medico(std::string identificador_persona, std::string nombre, std::string apellido, std::string dni,
-           std::string fecha_nacimiento, std::string correo_electronico, std::string celular, char sexo,
+           int añoNacimiento, std::string correo_electronico, std::string celular, char sexo,
            int anios_experiencia, std::string colegiatura, bool activo);
 
     int get_anios_experiencia() const;

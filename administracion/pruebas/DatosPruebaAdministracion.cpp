@@ -22,7 +22,7 @@ Medico* DatosPruebaAdministracion::crearMedicoCardiologo() {
         "Juan",
         "Perez",
         "12345678",
-        "1990-01-01",
+        1900,
         "juan@gmail.com",
         "999111222",
         'M',

@@ -5,7 +5,7 @@
 #ifndef PROYECTOCLINICA_HABILITACIONSERVICIO_H
 #define PROYECTOCLINICA_HABILITACIONSERVICIO_H
 #include "../modelos/Medico.h"
-#include "../repositorio/template/Repositorio.h"
+#include "../../repositorio/template/Repositorio.h"
 
 class MedicoEspecialidad;
 

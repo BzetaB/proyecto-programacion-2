@@ -34,6 +34,10 @@ public:
 
     std::string get_fecha() const;
     void set_fecha(std::string fecha);
+
+    bool seSuperpone(Horario* otro);
+
+    bool contiene(Horario* otro);
 };
 
 

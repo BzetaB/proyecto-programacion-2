@@ -1,0 +1,13 @@
+//
+// Created by thom_ on 20/11/2026.
+//
+
+#ifndef PROYECTOCLINICA_ESTADOCITASERVCIO_H
+#define PROYECTOCLINICA_ESTADOCITASERVCIO_H
+
+
+class EstadoCitaServcio {
+};
+
+
+#endif //PROYECTOCLINICA_ESTADOCITASERVCIO_H

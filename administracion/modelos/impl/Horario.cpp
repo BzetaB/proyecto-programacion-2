@@ -53,3 +53,30 @@ std::string Horario::get_fecha() const {
 void Horario::set_fecha(std::string fecha) {
     this->fecha = fecha;
 }
+
+bool Horario::contiene(Horario* otro) {
+
+    if (otro == nullptr) {
+        return false;
+    }
+
+    if (fecha != otro->fecha) {
+        return false;
+    }
+
+    return
+        horaInicio <= otro->horaInicio &&
+        horaFin >= otro->horaFin;
+}
+
+bool Horario::seSuperpone(Horario* otro) {
+    if (otro == nullptr) {
+        return false;
+    }
+
+    if (fecha != otro->fecha) {
+        return false;
+    }
+
+    return horaInicio < otro->horaFin && horaFin > otro->horaInicio;
+}

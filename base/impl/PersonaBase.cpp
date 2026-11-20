@@ -9,13 +9,13 @@ PersonaBase::PersonaBase() = default;
 PersonaBase::~PersonaBase() = default;
 
 PersonaBase::PersonaBase(std::string identificador_persona, std::string nombre,
-    std::string apellido, std::string dni,std::string fecha_nacimiento,
+    std::string apellido, std::string dni, int añoNacimiento,
     std::string correo_electronico, std::string celular, char sexo) {
     this->identificadorPersona = identificador_persona;
     this->nombre = nombre;
     this->apellido = apellido;
     this->dni = dni;
-    this->fechaNacimiento = fecha_nacimiento;
+    this->añoNacimiento = añoNacimiento;
     this->correoElectronico = correo_electronico;
     this->celular = celular;
     this->sexo = sexo;
@@ -23,10 +23,6 @@ PersonaBase::PersonaBase(std::string identificador_persona, std::string nombre,
 
 std::string PersonaBase::get_identificador_persona() const {
     return identificadorPersona;
-}
-
-void PersonaBase::set_identificador_persona(std::string identificador_persona) {
-    identificadorPersona = identificador_persona;
 }
 
 std::string PersonaBase::get_nombre() const {
@@ -49,16 +45,12 @@ std::string PersonaBase::get_dni() const {
     return dni;
 }
 
-void PersonaBase::set_dni(std::string dni) {
-    this->dni = dni;
+int PersonaBase::get_año_nacimiento() const {
+    return añoNacimiento;
 }
 
-std::string PersonaBase::get_fecha_nacimiento() const {
-    return fechaNacimiento;
-}
-
-void PersonaBase::set_fecha_nacimiento(std::string fecha_nacimiento) {
-    fechaNacimiento = fecha_nacimiento;
+void PersonaBase::set_año_nacimiento(int año_nacimiento) {
+    añoNacimiento = año_nacimiento;
 }
 
 std::string PersonaBase::get_correo_electronico() const {

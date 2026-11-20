@@ -4,6 +4,7 @@
 
 #include "../Sede.h"
 #include "../Consultorio.h"
+#include "../Horario.h"
 #include <iostream>
 
 Sede::Sede() = default;
@@ -47,3 +48,34 @@ void Sede::set_activo(bool activo) {
     this->activo = activo;
 }
 
+std::vector<Horario*> Sede::get_horarios() const {
+    return horarios;
+}
+
+void Sede::agregarHorario(Horario* horario) {
+
+    if (horario != nullptr) {
+        horarios.push_back(horario);
+    }
+}
+
+
+bool Sede::estaDisponible(Horario* horario) const {
+
+    if (horario == nullptr) {
+        return false;
+    }
+
+    for (Horario* horarioSede : horarios) {
+
+        if (horarioSede == nullptr) {
+            continue;
+        }
+
+        if (horarioSede->contiene(horario)) {
+            return true;
+        }
+    }
+
+    return false;
+}

@@ -13,7 +13,7 @@ protected:
     std::string nombre;
     std::string apellido;
     std::string dni;
-    std::string fechaNacimiento;
+    int añoNacimiento;
     std::string correoElectronico;
     std::string celular;
     char sexo = 'M';
@@ -24,11 +24,9 @@ public:
     virtual ~PersonaBase();
 
     PersonaBase(std::string identificador_persona, std::string nombre, std::string apellido, std::string dni,
-        std::string fecha_nacimiento, std::string correo_electronico, std::string celular, char sexo);
+        int añoNacimiento, std::string correo_electronico, std::string celular, char sexo);
 
     std::string get_identificador_persona() const;
-
-    void set_identificador_persona(std::string identificador_persona);
 
     std::string get_nombre() const;
 
@@ -40,11 +38,9 @@ public:
 
     std::string get_dni() const;
 
-    void set_dni(std::string dni);
+    int get_año_nacimiento() const;
 
-    std::string get_fecha_nacimiento() const;
-
-    void set_fecha_nacimiento(std::string fecha_nacimiento);
+    void set_año_nacimiento(int año_nacimiento);
 
     std::string get_correo_electronico() const;
 

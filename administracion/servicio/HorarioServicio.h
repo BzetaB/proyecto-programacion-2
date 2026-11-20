@@ -4,12 +4,13 @@
 
 #ifndef PROYECTOCLINICA_HORARIOSERVICE_H
 #define PROYECTOCLINICA_HORARIOSERVICE_H
-#include "../repositorio/template/Repositorio.h"
+#include "../../repositorio/template/Repositorio.h"
 #include <vector>
 
 class Horario;
 class Medico;
 class MedicoSede;
+class Sede;
 
 class HorarioServicio {
 private:
@@ -21,6 +22,11 @@ public:
     bool registrarAsignacion(MedicoSede* medicoSede);
 
     std::vector<MedicoSede*> listarAsignaciones();
+
+    bool medicoDisponibleEnSede(Medico* medico,
+                                Sede* sede,
+                                Horario* horario,
+                                int duracionMinutos);
 };
 
 

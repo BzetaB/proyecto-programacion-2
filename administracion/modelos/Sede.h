@@ -9,6 +9,7 @@
 #include <vector>
 
 class Consultorio;
+class Horario;
 
 class Sede {
 private:
@@ -16,6 +17,7 @@ private:
     std::string nombre;
     std::string direccion;
     bool activo = false;
+    std::vector<Horario*> horarios;
 
 public:
     Sede();
@@ -33,6 +35,13 @@ public:
 
     bool get_activo() const;
     void set_activo(bool activo);
+
+    std::vector<Horario*> get_horarios() const;
+
+    void agregarHorario(Horario* horario);
+
+    bool estaDisponible(Horario* horario) const;
+
 };
 
 
