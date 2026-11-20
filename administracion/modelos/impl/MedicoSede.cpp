@@ -6,8 +6,8 @@
 
 MedicoSede::MedicoSede() = default;
 
-MedicoSede::MedicoSede(int codigo, Medico* medico, Sede* sede)
-    : codigo(codigo), medico(medico), sede(sede) {
+MedicoSede::MedicoSede(int codigo, Medico* medico, Sede* sede, Horario* horario)
+    : codigo(codigo), medico(medico), sede(sede), horario(horario) {
 }
 
 MedicoSede::~MedicoSede() = default;
@@ -34,4 +34,12 @@ Sede* MedicoSede::get_sede() const {
 
 void MedicoSede::set_sede(Sede* sede) {
     this->sede = sede;
+}
+
+Horario* MedicoSede::get_horario() const {
+    return horario;
+}
+
+void MedicoSede::set_horario(Horario* horario) {
+    this->horario = horario;
 }

@@ -5,7 +5,7 @@
 #ifndef PROYECTOCLINICA_MEDICO_H
 #define PROYECTOCLINICA_MEDICO_H
 
-#include "../base/PersonaBase.h"
+#include "../../modelos/base/PersonaBase.h"
 #include <string>
 #include <vector>
 
@@ -36,9 +36,7 @@ public:
     bool get_activo() const;
     void set_activo(bool activo);
 
-    void agregarEspecialidad(MedicoEspecialidad* especialidad);
-    bool poseeEspecialidad(Especialidad* especialidad) const;
-    bool puedeRealizarServicio(Servicio* servicio) const;
+    std::string obtenerTipo() const override;
 };
 
 

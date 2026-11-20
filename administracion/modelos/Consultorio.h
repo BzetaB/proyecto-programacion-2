@@ -18,22 +18,27 @@ private:
     Sede* sede = nullptr;
 
 public:
-    Consultorio();
-    Consultorio(int codigo, std::string nombre,
-                std::vector<std::string> equipamentos, Sede* sede);
     ~Consultorio();
 
-    int get_codigo() const;
+    Consultorio();
+
+    Consultorio(int codigo, std::string nombre, std::vector<std::string> equipamentos, Sede *sede);
+
+    int codigo1() const;
+
     void set_codigo(int codigo);
 
-    const std::string& get_nombre() const;
+    std::string nombre1() const;
+
     void set_nombre(std::string nombre);
 
-    const std::vector<std::string>& get_equipamentos() const;
+    std::vector<std::string> equipamentos1() const;
+
     void set_equipamentos(std::vector<std::string> equipamentos);
 
-    Sede* get_sede() const;
-    void set_sede(Sede* sede);
+    Sede * get_sede() const;
+
+    void set_sede(Sede *sede);
 };
 
 

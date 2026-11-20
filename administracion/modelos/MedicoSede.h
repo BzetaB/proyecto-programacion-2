@@ -7,16 +7,19 @@
 
 class Medico;
 class Sede;
+class Horario;
 
 class MedicoSede {
 private:
     int codigo = 0;
     Medico* medico = nullptr;
     Sede* sede = nullptr;
+    Horario* horario = nullptr;
 
 public:
     MedicoSede();
-    MedicoSede(int codigo, Medico* medico, Sede* sede);
+    MedicoSede(int codigo, Medico* medico, Sede* sede, Horario* horario);
+
     ~MedicoSede();
 
     int get_codigo() const;
@@ -27,6 +30,10 @@ public:
 
     Sede* get_sede() const;
     void set_sede(Sede* sede);
+
+    Horario* get_horario() const;
+
+    void set_horario(Horario* horario);
 };
 
 

@@ -36,8 +36,6 @@ public:
     void set_activo(bool activo);
 
     const std::vector<Consultorio*>& get_consultorios() const;
-    void agregar_consultorio(Consultorio* consultorio);
-    void quitar_consultorio(Consultorio* consultorio);
 };
 
 
