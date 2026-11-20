@@ -4,17 +4,9 @@ project(ProyectoClinica)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(ProyectoClinica main.cpp
-        "modelos/base/impl/PersonaBase.cpp"
-        modelos/base/PersonaBase.h
-        "modelos/paciente/impl/Paciente.cpp"
-        modelos/paciente/impl/Persona.cpp
-        modelos/paciente/impl/Convenio.cpp
-        modelos/paciente/impl/Fecha.cpp
-        modelos/paciente/impl/HistoriaClinica.cpp
-        modelos/paciente/impl/RegistroAtencion.cpp
-        modelos/paciente/impl/RegistroPacientes.cpp
-        modelos/paciente/impl/Responsable.cpp
-        modelos/paciente/Paciente.h
+        "base/impl/PersonaBase.cpp"
+        base/PersonaBase.h
+        "paciente/modelo/impl/Convenio.cpp"
         "administracion/modelos/impl/Medico.cpp"
         administracion/modelos/Medico.h
         "administracion/modelos/impl/Especialidad.cpp"
@@ -31,27 +23,45 @@ add_executable(ProyectoClinica main.cpp
         administracion/modelos/Horario.h
         administracion/modelos/impl/Consultorio.cpp
         administracion/modelos/Consultorio.h
-        modelos/facturacion/ServicioCobro.h
-        modelos/facturacion/Pago.h
-        modelos/facturacion/CajaClinica.h
-        modelos/facturacion/Reportes.h
-        modelos/facturacion/Comprobante.h
-        modelos/facturacion/impl/ServicioCobro.cpp
-        modelos/facturacion/impl/Pago.cpp
-        modelos/facturacion/impl/Comprobante.cpp
-        modelos/facturacion/impl/CajaClinica.cpp
-        modelos/facturacion/impl/Reportes.cpp
-        administracion/repositorio/template/TPersonaRepositorio.h
-        administracion/repositorio/template/PersonaRepositorio.h
+        facturacion/ServicioCobro.h
+        facturacion/Pago.h
+        facturacion/CajaClinica.h
+        facturacion/Reportes.h
+        facturacion/Comprobante.h
+        facturacion/impl/ServicioCobro.cpp
+        facturacion/impl/Pago.cpp
+        facturacion/impl/Comprobante.cpp
+        facturacion/impl/CajaClinica.cpp
+        facturacion/impl/Reportes.cpp
+        repositorio/template/TPersonaRepositorio.h
+        repositorio/template/PersonaRepositorio.h
         administracion/servicio/impl/MedicoServicio.cpp
         administracion/servicio/MedicoServicio.h
         administracion/servicio/impl/HabilitacionServicio.cpp
         administracion/servicio/HabilitacionServicio.h
-        administracion/repositorio/template/Repositorio.h
+        repositorio/template/Repositorio.h
         administracion/servicio/impl/HorarioServicio.cpp
         administracion/servicio/HorarioServicio.h
         administracion/servicio/impl/ConsultorioServicio.cpp
         administracion/servicio/ConsultorioServicio.h
         administracion/pruebas/DatosPruebaAdministracion.cpp
         administracion/pruebas/DatosPruebaAdministracion.h
+        atencion/modelo/Cita.cpp
+        atencion/modelo/Cita.h
+        atencion/modelo/Atencion.cpp
+        atencion/modelo/Atencion.h
+        paciente/modelo/impl/Paciente.cpp
+        paciente/modelo/Paciente.h
+        paciente/modelo/impl/Responsable.cpp
+        paciente/modelo/Responsable.h
+        paciente/modelo/impl/HistoriaClinica.cpp
+        paciente/modelo/HistoriaClinica.h
+        paciente/servicio/PacienteServicio.cpp
+        paciente/servicio/PacienteServicio.h
+        atencion/servicio/HistoriaClinicaServicio.cpp
+        atencion/servicio/HistoriaClinicaServicio.h
+        atencion/servicio/AgendaServicio.cpp
+        atencion/servicio/AgendaServicio.h
+        atencion/servicio/EstadoCitaServcio.cpp
+        atencion/servicio/EstadoCitaServcio.h
 )

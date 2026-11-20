@@ -30,6 +30,19 @@ public:
         }
         return nullptr;
     }
+
+    T* buscarPorDni(const std::string& dni) {
+
+        for (T* elemento : elementos) {
+
+            if (elemento->get_dni() == dni) {
+                return elemento;
+            }
+        }
+
+        return nullptr;
+    }
+
 };
 
 
