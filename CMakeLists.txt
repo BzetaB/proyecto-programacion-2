@@ -66,4 +66,6 @@ add_executable(ProyectoClinica main.cpp
         atencion/servicio/EstadoCitaServcio.h
         atencion/servicio/CitaServicio.cpp
         atencion/servicio/CitaServicio.h
+        ejercicios/PruebasEscenarios.cpp
+        ejercicios/PruebasEscenarios.h
 )

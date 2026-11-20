@@ -19,6 +19,7 @@
 #include "administracion/modelos/Sede.h"
 #include "administracion/modelos/Horario.h"
 #include "administracion/modelos/MedicoSede.h"
+#include "ejercicios/PruebasEscenarios.h"
 
 void registrarPaciente(PacienteServicio& servicio, ResponsableServicio& responsableServicio,
                        HistoriaClinicaServicio& historiaServicio) {
@@ -565,6 +566,7 @@ int main() {
         std::cout << "3. Gestion de citas\n";
         std::cout << "4. Gestion de atenciones\n";
         std::cout << "5. Facturacion\n";
+        std::cout << "6. Probar test\n";
         std::cout << "0. Salir\n";
         std::cout << "Seleccione una opcion: ";
 
@@ -591,6 +593,9 @@ int main() {
                 break;
             case 5:
                 std::cout << "Modulo de facturacion pendiente.\n";
+                break;
+            case 6:
+                probarEscenariosComprobacion();
                 break;
             case 0:
                 break;
