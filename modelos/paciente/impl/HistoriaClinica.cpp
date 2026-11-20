@@ -1,4 +1,4 @@
-#include "HistoriaClinica.h"
+#include "../HistoriaClinica.h"
 #include <iostream>
 using namespace std;
 

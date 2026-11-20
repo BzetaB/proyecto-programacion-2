@@ -1,4 +1,4 @@
-#include "Convenio.h"
+#include "../Convenio.h"
 using namespace std;
 
 Convenio::Convenio(string codigo, string empresa, double descuentoPorcentaje) {

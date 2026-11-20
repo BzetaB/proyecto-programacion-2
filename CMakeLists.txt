@@ -3,10 +3,17 @@ project(ProyectoClinica)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(ProyectoClinica main.cpp
+add_executable(ProyectoClinica
         "modelos/base/impl/PersonaBase.cpp"
         modelos/base/PersonaBase.h
         "modelos/paciente/impl/Paciente.cpp"
+        modelos/paciente/impl/Persona.cpp
+        modelos/paciente/impl/Convenio.cpp
+        modelos/paciente/impl/Fecha.cpp
+        modelos/paciente/impl/HistoriaClinica.cpp
+        modelos/paciente/impl/RegistroAtencion.cpp
+        modelos/paciente/impl/RegistroPacientes.cpp
+        modelos/paciente/impl/Responsable.cpp
         modelos/paciente/Paciente.h
         "administracion/modelos/impl/Medico.cpp"
         administracion/modelos/Medico.h

@@ -1,4 +1,4 @@
-#include "RegistroAtencion.h"
+#include "../RegistroAtencion.h"
 #include <iostream>
 using namespace std;
 

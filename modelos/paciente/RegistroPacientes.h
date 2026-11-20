@@ -15,7 +15,7 @@ public:
     RegistroPacientes();
     ~RegistroPacientes();
 
-    // Devuelve el paciente registrado, o nullptr si alguna validacion falla (muestra el error).
+    // Devuelve el paciente registrado, o nullptr si alguna validacion falla (muestra el error con cout).
     // Para menores de edad hay que enviar los datos del responsable.
     Paciente* registrar(string dni, string nombres, string apellidos,
                         Fecha fechaNacimiento, string telefono, string sedeRegistro,

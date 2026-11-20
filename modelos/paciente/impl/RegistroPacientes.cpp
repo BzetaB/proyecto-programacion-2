@@ -1,4 +1,4 @@
-#include "RegistroPacientes.h"
+#include "../RegistroPacientes.h"
 #include <iostream>
 using namespace std;
 
@@ -41,7 +41,7 @@ Paciente* RegistroPacientes::registrar(string dni, string nombres, string apelli
                                        Fecha hoy,
                                        string dniResp, string nombreResp,
                                        string parentesco, string telefonoResp) {
-    // Validaciones: si algo falla se muestra el mensaje y no se registra 
+    // ---- Validaciones: si algo falla se muestra el mensaje y no se registra ----
     if (!this->dniValido(dni)) {
         cout << "ERROR: el DNI debe tener exactamente 8 digitos." << endl;
         return nullptr;
@@ -59,7 +59,7 @@ Paciente* RegistroPacientes::registrar(string dni, string nombres, string apelli
         return nullptr;
     }
 
-    // Evitar duplicados (aunque el paciente cambie de sede) 
+    // ---- Evitar duplicados (aunque el paciente cambie de sede) ----
     Paciente* existente = this->buscarPorDni(dni);
     if (existente != nullptr) {
         cout << "ERROR: el DNI " << dni << " ya esta registrado como PAC-" << existente->getCodigo()
@@ -75,6 +75,7 @@ Paciente* RegistroPacientes::registrar(string dni, string nombres, string apelli
         }
     }
 
+    // ---- Menores de edad: deben tener responsable ----
     bool esMenor = fechaNacimiento.calcularEdad(hoy) < 18;
     if (esMenor) {
         if (dniResp == "") {
@@ -91,7 +92,7 @@ Paciente* RegistroPacientes::registrar(string dni, string nombres, string apelli
         }
     }
 
-    // se crea el paciente 
+    // ---- Todo correcto: se crea el paciente ----
     this->contador++;
     Paciente* nuevo = new Paciente(this->contador, dni, nombres, apellidos, fechaNacimiento, telefono, sedeRegistro);
     if (esMenor) {

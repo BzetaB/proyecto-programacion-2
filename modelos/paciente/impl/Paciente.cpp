@@ -1,59 +1,55 @@
-//
-// Created by thom_ on 12/11/2026.
-//
-
 #include "../Paciente.h"
+#include <iostream>
+using namespace std;
 
-Paciente::~Paciente() = default;
-
-Paciente::Paciente() = default;
-
-Paciente::Paciente(bool es_menor_de_edad, std::string grupo_sanguineo, std::string contacto_emergencia_nombre,
-    std::string contacto_emergencia_telefono): esMenorDeEdad(es_menor_de_edad),
-                                               grupoSanguineo(grupo_sanguineo),
-                                               contactoEmergenciaNombre(contacto_emergencia_nombre),
-                                               contactoEmergenciaTelefono(contacto_emergencia_telefono) {
+// La clase base (Persona) se inicializa despues de los dos puntos, como en la clase 11A.
+Paciente::Paciente(int codigo, string dni, string nombres, string apellidos,
+                   Fecha fechaNacimiento, string telefono, string sedeRegistro)
+    : Persona(dni, nombres, apellidos, fechaNacimiento, telefono) {
+    this->codigo = codigo;
+    this->sedeRegistro = sedeRegistro;
+    this->historia.setNumero(codigo);
+    this->responsable = nullptr;
+    this->convenio = nullptr;
 }
 
-Paciente::Paciente(std::string identificador_persona, std::string nombre, std::string apellido, std::string dni,
-    std::string fecha_nacimiento, std::string correo_electronico, std::string celular, char sexo, bool es_menor_de_edad,
-    std::string grupo_sanguineo, std::string contacto_emergencia_nombre, std::string contacto_emergencia_telefono): PersonaBase(
-        identificador_persona, nombre, apellido, dni, fecha_nacimiento, correo_electronico, celular, sexo),
-    esMenorDeEdad(es_menor_de_edad),
-    grupoSanguineo(grupo_sanguineo),
-    contactoEmergenciaNombre(contacto_emergencia_nombre),
-    contactoEmergenciaTelefono(contacto_emergencia_telefono) {
+Paciente::~Paciente() {
+    delete this->responsable;
 }
 
+int Paciente::getCodigo() const { return this->codigo; }
+HistoriaClinica& Paciente::getHistoria() { return this->historia; }
 
-bool Paciente::is_es_menor_de_edad() const {
-    return esMenorDeEdad;
+bool Paciente::esMenor(const Fecha& actual) const {
+    return this->edad(actual) < 18;
 }
 
-void Paciente::set_es_menor_de_edad(bool es_menor_de_edad) {
-    esMenorDeEdad = es_menor_de_edad;
+bool Paciente::asignarResponsable(string dniResp, string nombreResp, string parentesco, string telefonoResp) {
+    if (dniResp == this->dni) {
+        cout << "ERROR: el paciente no puede ser su propio responsable." << endl;
+        return false;
+    }
+    delete this->responsable;   // si ya habia uno, se reemplaza
+    this->responsable = new Responsable(dniResp, nombreResp, parentesco, telefonoResp);
+    return true;
 }
 
-std::string Paciente::get_grupo_sanguineo() const {
-    return grupoSanguineo;
+void Paciente::asignarConvenio(Convenio* convenio) {
+    this->convenio = convenio;
 }
 
-void Paciente::set_grupo_sanguineo(std::string grupo_sanguineo) {
-    grupoSanguineo = grupo_sanguineo;
+string Paciente::rol() const {
+    return "Paciente";
 }
 
-std::string Paciente::get_contacto_emergencia_nombre() const {
-    return contactoEmergenciaNombre;
-}
-
-void Paciente::set_contacto_emergencia_nombre(std::string contacto_emergencia_nombre) {
-    contactoEmergenciaNombre = contacto_emergencia_nombre;
-}
-
-std::string Paciente::get_contacto_emergencia_telefono() const {
-    return contactoEmergenciaTelefono;
-}
-
-void Paciente::set_contacto_emergencia_telefono(std::string contacto_emergencia_telefono) {
-    contactoEmergenciaTelefono = contacto_emergencia_telefono;
+void Paciente::mostrar() const {
+    cout << "PAC-" << this->codigo << " | " << this->nombres << " " << this->apellidos
+         << " | DNI " << this->dni << " | registrado en " << this->sedeRegistro << endl;
+    if (this->convenio != nullptr) {
+        cout << "      Convenio: " << this->convenio->getEmpresa() << endl;
+    }
+    if (this->responsable != nullptr) {
+        cout << "      Responsable: ";
+        this->responsable->mostrar();
+    }
 }
