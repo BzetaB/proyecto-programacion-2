@@ -32,6 +32,20 @@ bool CitaServicio::programarCita(
         return false;
     }
 
+    if (cita->get_estado() != PROGRAMADA) {
+        std::cout
+            << "Solo se pueden programar citas en estado PROGRAMADA."
+            << std::endl;
+        return false;
+    }
+
+    if (buscarPorCodigo(cita->get_codigo()) != nullptr) {
+        std::cout
+            << "Ya existe una cita con ese codigo."
+            << std::endl;
+        return false;
+    }
+
     if (!agendaServicio->horarioDisponible(
             cita->get_medico(),
             cita->get_sede(),
@@ -108,8 +122,8 @@ bool CitaServicio::reprogramarCita(
     }
 
     if (
-        cita->get_estado() == ATENDIDA ||
-        cita->get_estado() == CANCELADA
+        cita->get_estado() != PROGRAMADA &&
+        cita->get_estado() != CONFIRMADA
     ) {
 
         std::cout
@@ -121,6 +135,27 @@ bool CitaServicio::reprogramarCita(
 
     Horario* horarioAnterior =
         cita->get_horario();
+
+    if (!agendaServicio->horarioDisponible(
+            cita->get_medico(),
+            cita->get_sede(),
+            cita->get_servicio(),
+            nuevoHorario)) {
+        std::cout
+            << "Nuevo horario no disponible."
+            << std::endl;
+        return false;
+    }
+
+    if (!agendaServicio->consultorioCompatible(
+            cita->get_consultorio(),
+            cita->get_sede(),
+            cita->get_servicio())) {
+        std::cout
+            << "Consultorio incompatible."
+            << std::endl;
+        return false;
+    }
 
     cita->set_horario(nuevoHorario);
 
@@ -151,6 +186,16 @@ bool CitaServicio::cancelarCita(
             << "No se puede cancelar una cita atendida."
             << std::endl;
 
+        return false;
+    }
+
+    if (
+        cita->get_estado() != PROGRAMADA &&
+        cita->get_estado() != CONFIRMADA
+    ) {
+        std::cout
+            << "Solo se puede cancelar una cita programada o confirmada."
+            << std::endl;
         return false;
     }
 

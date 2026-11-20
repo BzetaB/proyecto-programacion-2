@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+#include <cstdio>
 
 #include "paciente/modelo/Paciente.h"
 #include "paciente/modelo/Responsable.h"
@@ -19,7 +20,10 @@
 #include "administracion/modelos/Sede.h"
 #include "administracion/modelos/Horario.h"
 #include "administracion/modelos/MedicoSede.h"
+#include "administracion/modelos/Servicio.h"
+#include "administracion/modelos/Consultorio.h"
 #include "ejercicios/PruebasEscenarios.h"
+#include "test/PruebasPagosReportes.h"
 
 void registrarPaciente(PacienteServicio& servicio, ResponsableServicio& responsableServicio,
                        HistoriaClinicaServicio& historiaServicio) {
@@ -389,8 +393,113 @@ void listarHorariosMedicos(HorarioServicio& horarioServicio) {
     }
 }
 
+void registrarServicio(std::vector<Servicio*>& servicios) {
+    int codigo;
+    int duracion;
+    double tarifa;
+    std::string nombre;
+    std::string descripcion;
+    char activoInput;
+
+    std::cout << "\n--- Registrar servicio ---\n";
+    std::cout << "Codigo: ";
+    std::cin >> codigo;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout << "Nombre: ";
+    std::getline(std::cin, nombre);
+    std::cout << "Descripcion: ";
+    std::getline(std::cin, descripcion);
+    std::cout << "Duracion en minutos: ";
+    std::cin >> duracion;
+    std::cout << "Tarifa base: ";
+    std::cin >> tarifa;
+    std::cout << "Activo (S/N): ";
+    std::cin >> activoInput;
+
+    if (duracion <= 0 || tarifa < 0) {
+        std::cout << "Duracion o tarifa invalida.\n";
+        return;
+    }
+
+    servicios.push_back(new Servicio(
+        codigo, nombre, descripcion, duracion, tarifa,
+        activoInput == 'S' || activoInput == 's', nullptr, {}
+    ));
+    std::cout << "Servicio registrado correctamente.\n";
+}
+
+void listarServicios(const std::vector<Servicio*>& servicios) {
+    std::cout << "\n--- Servicios registrados ---\n";
+    if (servicios.empty()) {
+        std::cout << "No hay servicios registrados.\n";
+        return;
+    }
+    for (Servicio* servicio : servicios) {
+        std::cout << servicio->get_codigo()
+                  << " | " << servicio->get_nombre()
+                  << " | " << servicio->get_duracion_minutos() << " min"
+                  << " | S/" << servicio->get_tarifa_base()
+                  << " | " << (servicio->get_activo() ? "Activo" : "Inactivo") << '\n';
+    }
+}
+
+void registrarConsultorio(std::vector<Sede*>& sedes,
+                          std::vector<Consultorio*>& consultorios,
+                          ConsultorioServicio& consultorioServicio) {
+    int codigo;
+    int codigoSede;
+    std::string nombre;
+
+    listarSedes(sedes);
+    if (sedes.empty()) {
+        return;
+    }
+
+    std::cout << "\n--- Registrar consultorio ---\n";
+    std::cout << "Codigo: ";
+    std::cin >> codigo;
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cout << "Nombre: ";
+    std::getline(std::cin, nombre);
+    std::cout << "Codigo de sede: ";
+    std::cin >> codigoSede;
+
+    Sede* sede = nullptr;
+    for (Sede* candidata : sedes) {
+        if (candidata->get_codigo() == codigoSede) {
+            sede = candidata;
+            break;
+        }
+    }
+    if (sede == nullptr) {
+        std::cout << "Sede no encontrada.\n";
+        return;
+    }
+
+    Consultorio* consultorio = new Consultorio(codigo, nombre, {}, sede);
+    consultorios.push_back(consultorio);
+    consultorioServicio.registrarConsultorio(consultorio);
+    std::cout << "Consultorio registrado correctamente.\n";
+}
+
+void listarConsultorios(const std::vector<Consultorio*>& consultorios) {
+    std::cout << "\n--- Consultorios registrados ---\n";
+    if (consultorios.empty()) {
+        std::cout << "No hay consultorios registrados.\n";
+        return;
+    }
+    for (Consultorio* consultorio : consultorios) {
+        Sede* sede = consultorio->get_sede();
+        std::cout << consultorio->codigo1()
+                  << " | " << consultorio->nombre1()
+                  << " | Sede: " << (sede ? sede->get_nombre() : "Sin asignar") << '\n';
+    }
+}
+
 void menuAdministracion(MedicoServicio& medicoServicio, HorarioServicio& horarioServicio,
-                        std::vector<Sede*>& sedes) {
+                        std::vector<Sede*>& sedes, std::vector<Servicio*>& servicios,
+                        std::vector<Consultorio*>& consultorios,
+                        ConsultorioServicio& consultorioServicio) {
     int opcion;
     do {
         std::cout << "\n==============================\n";
@@ -402,6 +511,10 @@ void menuAdministracion(MedicoServicio& medicoServicio, HorarioServicio& horario
         std::cout << "4. Registrar sede\n";
         std::cout << "5. Asignar horario a medico\n";
         std::cout << "6. Listar horarios asignados\n";
+        std::cout << "7. Registrar servicio\n";
+        std::cout << "8. Listar servicios\n";
+        std::cout << "9. Registrar consultorio\n";
+        std::cout << "10. Listar consultorios\n";
         std::cout << "0. Volver\n";
         std::cout << "Seleccione una opcion: ";
         if (!(std::cin >> opcion)) {
@@ -418,6 +531,10 @@ void menuAdministracion(MedicoServicio& medicoServicio, HorarioServicio& horario
             case 4: registrarSede(sedes); break;
             case 5: asignarHorarioMedico(medicoServicio, horarioServicio, sedes); break;
             case 6: listarHorariosMedicos(horarioServicio); break;
+            case 7: registrarServicio(servicios); break;
+            case 8: listarServicios(servicios); break;
+            case 9: registrarConsultorio(sedes, consultorios, consultorioServicio); break;
+            case 10: listarConsultorios(consultorios); break;
             case 0: break;
             default: std::cout << "Opcion invalida.\n";
         }
@@ -553,6 +670,8 @@ int main() {
     HorarioServicio horarioServicio;
     ConsultorioServicio consultorioServicio;
     std::vector<Sede*> sedes;
+    std::vector<Servicio*> servicios;
+    std::vector<Consultorio*> consultorios;
     AgendaServicio agendaServicio(&citaRepository, &horarioServicio, &consultorioServicio);
     CitaServicio citaServicio(&citaRepository, &agendaServicio, &historiaServicio);
     int opcion;
@@ -566,7 +685,8 @@ int main() {
         std::cout << "3. Gestion de citas\n";
         std::cout << "4. Gestion de atenciones\n";
         std::cout << "5. Facturacion\n";
-        std::cout << "6. Probar test\n";
+        std::cout << "6. Ejecutar pruebas generales\n";
+        std::cout << "7. Ejecutar pruebas de pagos y reportes\n";
         std::cout << "0. Salir\n";
         std::cout << "Seleccione una opcion: ";
 
@@ -580,7 +700,8 @@ int main() {
 
         switch (opcion) {
             case 1:
-                menuAdministracion(medicoServicio, horarioServicio, sedes);
+                menuAdministracion(medicoServicio, horarioServicio, sedes, servicios,
+                                   consultorios, consultorioServicio);
                 break;
             case 2:
                 menuPacientes(pacienteServicio, responsableServicio, historiaServicio);
@@ -596,6 +717,9 @@ int main() {
                 break;
             case 6:
                 probarEscenariosComprobacion();
+                break;
+            case 7:
+                probarPagosReportes();
                 break;
             case 0:
                 break;

@@ -80,12 +80,21 @@ bool AgendaServicio::consultorioCompatible(
 bool AgendaServicio::existeSuperposicion(
         Cita* citaPropuesta) {
 
+    if (citaPropuesta == nullptr) {
+        return false;
+    }
+
     for (Cita* cita : citaRepository->listar()) {
 
         if (cita == nullptr ||
             cita == citaPropuesta) {
             continue;
-            }
+        }
+
+        if (cita->get_estado() == CANCELADA ||
+            cita->get_estado() == INASISTENCIA) {
+            continue;
+        }
 
         if (
             cita->get_horario()
